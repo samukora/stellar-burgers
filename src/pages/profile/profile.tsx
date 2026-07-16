@@ -11,11 +11,9 @@ export const Profile: FC = () => {
   const user = useSelector(selectUserInfo);
   const dispatch = useDispatch();
 
-  if (!user) return <Navigate to='/login' />;
-
   const [formValue, setFormValue] = useState({
-    name: user.name,
-    email: user.email,
+    name: user?.name || '',
+    email: user?.email || '',
     password: ''
   });
 
@@ -26,6 +24,8 @@ export const Profile: FC = () => {
       email: user?.email || ''
     }));
   }, [user]);
+
+  if (!user) return <Navigate to='/login' />;
 
   const isFormChanged =
     formValue.name !== user?.name ||

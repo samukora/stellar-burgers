@@ -28,12 +28,8 @@ export const BurgerConstructor: FC = () => {
       return;
     }
 
-    const ingredientsList: string[] = constructorItems.ingredients.reduce(
-      (acc: string[], item) => {
-        acc.push(item._id);
-        return acc;
-      },
-      []
+    const ingredientsList: string[] = constructorItems.ingredients.map(
+      (item) => item._id
     );
     dispatch(
       createOrder([

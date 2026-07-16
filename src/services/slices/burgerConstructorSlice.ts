@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { TConstructorIngredient } from '@utils-types';
 
 type TBurgerConstructor = {
@@ -15,10 +15,8 @@ const burgerConstructorSlice = createSlice({
   name: 'burgerConstructor',
   initialState,
   selectors: {
-    selectBurgerItems: (store) => ({
-      bun: store.bun,
-      ingredients: store.ingredients
-    })
+    selectBun: (state: TBurgerConstructor) => state.bun,
+    selectIngredients: (state: TBurgerConstructor) => state.ingredients
   },
   reducers: {
     addItem: (state, action: PayloadAction<TConstructorIngredient>) => {
@@ -60,7 +58,14 @@ const burgerConstructorSlice = createSlice({
 
 export default burgerConstructorSlice.reducer;
 
-export const { selectBurgerItems } = burgerConstructorSlice.selectors;
+export const selectBurgerItems = createSelector(
+  [
+    burgerConstructorSlice.selectors.selectBun,
+    burgerConstructorSlice.selectors.selectIngredients
+  ],
+  (bun, ingredients) => ({ bun, ingredients })
+);
+
 export const {
   addItem,
   removeItem,

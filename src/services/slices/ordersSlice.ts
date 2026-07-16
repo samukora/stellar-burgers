@@ -1,5 +1,5 @@
-import { getOrdersApi, orderBurgerApi } from '@api';
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getOrderByNumberApi, getOrdersApi, orderBurgerApi } from '@api';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { TOrder } from '@utils-types';
 import { clearConstructor } from './burgerConstructorSlice';
 
@@ -18,6 +18,18 @@ const initialState: TOrdersState = {
   orderRequest: false,
   orderModalData: null
 };
+
+export const getOrderByNumber = createAsyncThunk(
+  'orders/getByNumber',
+  async (orderId: number, { rejectWithValue }) => {
+    try {
+      const data = await getOrderByNumberApi(orderId);
+      return data;
+    } catch (err) {
+      return rejectWithValue('Ошибка загрузки данных');
+    }
+  }
+);
 
 export const getOrders = createAsyncThunk(
   'orders/getAll',
@@ -54,12 +66,22 @@ const ordersSlice = createSlice({
   selectors: {
     selectOrderRequest: (state) => state.orderRequest,
     selectOrderModalData: (state) => state.orderModalData,
-    selectOrders: (state) => state.orders,
-    selectOrderByNumber: (state, number: string) =>
-      state.orders.find((item) => item.number === Number(number))
+    selectOrders: (state) => state.orders
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getOrderByNumber.pending, (state) => {
+        state.error = null;
+        state.isOrdersLoading = true;
+      })
+      .addCase(getOrderByNumber.rejected, (state, action) => {
+        state.isOrdersLoading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(getOrderByNumber.fulfilled, (state, action) => {
+        state.isOrdersLoading = false;
+        state.orderModalData = action.payload.orders[0];
+      })
       .addCase(getOrders.pending, (state) => {
         state.error = null;
         state.isOrdersLoading = true;
@@ -90,10 +112,6 @@ const ordersSlice = createSlice({
 });
 
 export default ordersSlice.reducer;
-export const {
-  selectOrderRequest,
-  selectOrderModalData,
-  selectOrders,
-  selectOrderByNumber
-} = ordersSlice.selectors;
+export const { selectOrderRequest, selectOrderModalData, selectOrders } =
+  ordersSlice.selectors;
 export const { closeOrderModalData } = ordersSlice.actions;
