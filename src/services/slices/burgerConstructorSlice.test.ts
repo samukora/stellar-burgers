@@ -217,7 +217,7 @@ describe('тестирование простого экшена', () => {
       bun: null,
       ingredients: [main, { ...main, id: '4' }, sauce]
     };
-    const newState = constructorReducer(initialState, moveDownItem(4));
+    const newState = constructorReducer(initialState, moveDownItem(2));
 
     expect(newState.ingredients.length).toBe(3);
     expect(newState.ingredients[0].id).toBe('1');
