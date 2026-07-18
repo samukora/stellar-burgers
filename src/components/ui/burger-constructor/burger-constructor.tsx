@@ -20,7 +20,7 @@ export const BurgerConstructorUI: FC<BurgerConstructorUIProps> = ({
 }) => (
   <section
     className={styles.burger_constructor}
-    data-testid={`testIdforConstructor`}
+    data-testid={`test-id-constructor`}
   >
     {constructorItems.bun ? (
       <div className={`${styles.element} mb-4 mr-4`}>

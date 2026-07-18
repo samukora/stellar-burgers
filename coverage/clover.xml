@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1784281344379" clover="3.2.0">
-  <project timestamp="1784281344379" name="All files">
+<coverage generated="1784343553296" clover="3.2.0">
+  <project timestamp="1784343553296" name="All files">
     <metrics statements="439" coveredstatements="236" conditionals="16" coveredconditionals="15" methods="29" coveredmethods="6" elements="484" coveredelements="257" complexity="0" loc="439" ncloc="439" packages="2" files="4" classes="4"/>
     <package name="services.slices">
       <metrics statements="139" coveredstatements="131" conditionals="16" coveredconditionals="15" methods="11" coveredmethods="6"/>
-      <file name="burgerConstructorSlice.ts" path="/Users/mac/Yandex.Disk.localized/JavaScript/Practicum Yandex/Projects/stellar-burgers/src/services/slices/burgerConstructorSlice.ts">
+      <file name="burgerConstructorSlice.ts" path="/Users/elis/Documents/stellar-burgers/src/services/slices/burgerConstructorSlice.ts">
         <metrics statements="76" coveredstatements="75" conditionals="12" coveredconditionals="11" methods="7" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -83,7 +83,7 @@
         <line num="75" count="1" type="stmt"/>
         <line num="76" count="1" type="stmt"/>
       </file>
-      <file name="ingredientsSlice.ts" path="/Users/mac/Yandex.Disk.localized/JavaScript/Practicum Yandex/Projects/stellar-burgers/src/services/slices/ingredientsSlice.ts">
+      <file name="ingredientsSlice.ts" path="/Users/elis/Documents/stellar-burgers/src/services/slices/ingredientsSlice.ts">
         <metrics statements="63" coveredstatements="56" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -152,7 +152,7 @@
     </package>
     <package name="utils">
       <metrics statements="300" coveredstatements="105" conditionals="0" coveredconditionals="0" methods="18" coveredmethods="0"/>
-      <file name="burger-api.ts" path="/Users/mac/Yandex.Disk.localized/JavaScript/Practicum Yandex/Projects/stellar-burgers/src/utils/burger-api.ts">
+      <file name="burger-api.ts" path="/Users/elis/Documents/stellar-burgers/src/utils/burger-api.ts">
         <metrics statements="253" coveredstatements="103" conditionals="0" coveredconditionals="0" methods="15" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -408,7 +408,7 @@
         <line num="252" count="0" type="stmt"/>
         <line num="253" count="0" type="stmt"/>
       </file>
-      <file name="cookie.ts" path="/Users/mac/Yandex.Disk.localized/JavaScript/Practicum Yandex/Projects/stellar-burgers/src/utils/cookie.ts">
+      <file name="cookie.ts" path="/Users/elis/Documents/stellar-burgers/src/utils/cookie.ts">
         <metrics statements="47" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
