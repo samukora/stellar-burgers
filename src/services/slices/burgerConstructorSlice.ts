@@ -37,14 +37,15 @@ const burgerConstructorSlice = createSlice({
     },
     moveUpItem: (state, action: PayloadAction<number>) => {
       const currentIndex = action.payload;
-      if (currentIndex === 0) return;
+      if (currentIndex <= 0 || currentIndex >= state.ingredients.length) return;
       const currentIngredient = state.ingredients[currentIndex];
       state.ingredients[currentIndex] = state.ingredients[currentIndex - 1];
       state.ingredients[currentIndex - 1] = currentIngredient;
     },
     moveDownItem: (state, action: PayloadAction<number>) => {
       const currentIndex = action.payload;
-      if (currentIndex === state.ingredients.length - 1) return;
+      if (currentIndex < 0 || currentIndex >= state.ingredients.length - 1)
+        return;
       const currentIngredient = state.ingredients[currentIndex];
       state.ingredients[currentIndex] = state.ingredients[currentIndex + 1];
       state.ingredients[currentIndex + 1] = currentIngredient;
